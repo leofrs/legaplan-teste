@@ -1,0 +1,19 @@
+.containerTarefas {
+    width: 450px;
+    height: 446px;
+    border: 1px solid #eaecf0;
+    border-radius: 16px;
+    padding: 32px;
+    gap: 24px;
+    margin-bottom: 24px;
+
+    h4 {
+        font-family: "Inter Tight";
+        font-weight: 400;
+        size: 16px;
+        line-height: 19.36px;
+        letter-spacing: -2%;
+        color: #0000008a;
+        text-align: center;
+    }
+}
