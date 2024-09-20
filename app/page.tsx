@@ -1,13 +1,5 @@
-import Header from "@/components/header";
-import Button from "../components/button/index";
-import Tarefas from "@/components/tarefas";
+import App from "./_app";
 
 export default function Home() {
-    return (
-        <main className="main-container">
-            <Header />
-            <Tarefas />
-            <Button />
-        </main>
-    );
+    return <App />;
 }
