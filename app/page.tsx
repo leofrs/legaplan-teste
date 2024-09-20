@@ -1,14 +1,13 @@
 import Header from "@/components/header";
-//import Button from "../components/button/index";
 import Tarefas from "@/components/tarefas";
-import ModalContainer from "@/components/modals/index";
+import ModalAdd from "@/components/modals/add-tarefa";
 
 export default function Home() {
     return (
         <div className="main-container">
             <Header />
             <Tarefas />
-            <ModalContainer />
+            <ModalAdd />
         </div>
     );
 }

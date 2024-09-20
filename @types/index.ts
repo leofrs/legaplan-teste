@@ -4,11 +4,16 @@ export interface ProviderProps {
     children: ReactNode;
 }
 
-export interface ModalType {
+export interface ModalAddType {
     title: string | null;
     setTitle: (title: string | null) => void;
     addIsOpen: boolean;
     setAddIsOpen: (isOpen: boolean) => void;
+}
+export interface ModalDeleType {
+    id: number | null;
+    delIsOpen: boolean;
+    setDelIsOpen: (delIsOpen: boolean) => void;
 }
 
 export interface Task {
@@ -19,7 +24,7 @@ export interface Task {
 export interface Task {
     id: string;
     title: string;
-    completed: boolean;
+    finalizada: boolean;
 }
 
 export interface TaskContextType {

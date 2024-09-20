@@ -1,9 +1,16 @@
-$start-color: #0796d3;
-$end-color: #53c0f0;
+$startAdicionar-color: #0796d3;
+$endAdicionar-color: #53c0f0;
 $direction: to right;
 
+$startDelete-color: #d30707;
+$endDelete-color: #f05353;
+
 .buttonPrimary {
-    background: linear-gradient(to right, $start-color, $end-color);
+    background: linear-gradient(
+        to right,
+        $startAdicionar-color,
+        $endAdicionar-color
+    );
     color: white;
     width: 450px;
     height: 51px;
@@ -22,8 +29,8 @@ $direction: to right;
     &:hover {
         background: linear-gradient(
             to right,
-            lighten($start-color, 10%),
-            lighten($end-color, 10%)
+            lighten($startAdicionar-color, 10%),
+            lighten($endAdicionar-color, 10%)
         );
     }
 }
@@ -46,10 +53,40 @@ $direction: to right;
     text-align: center;
 
     &:hover {
+        background: linear-gradient(to right, lighten(#bdb0b0, 10%), #dbd2d2);
+        transition: background 0.3s ease;
+    }
+}
+
+.btnDelete {
+    background: linear-gradient(to right, $startDelete-color, $endDelete-color);
+    color: white;
+    width: 450px;
+    height: 51px;
+    border: 1px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: Inter Tight;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.36px;
+    letter-spacing: -0.02em;
+    text-align: center;
+
+    &:hover {
         background: linear-gradient(
             to right,
-            lighten($start-color, 10%),
-            lighten($end-color, 10%)
+            lighten($startDelete-color, 10%),
+            lighten($endDelete-color, 10%)
         );
+    }
+}
+
+@media (max-width: 768px) {
+    .buttonPrimary {
+        width: 272px;
+        height: 51px;
     }
 }
