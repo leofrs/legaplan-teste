@@ -1,15 +1,10 @@
 "use client";
 
-import { useContext } from "react";
-import { ModalContext } from "@/context/modalContext";
-
 import styles from "../../../styles/modal-add.module.scss";
 import stylesBtn from "../../../styles/buttons.module.scss";
+import { ModalType } from "@/@types";
 
-export default function ModalAdd() {
-    const context = useContext(ModalContext);
-    const { title, setTitle, isOpen, setIsOpen } = context;
-
+export default function ModalAdd({ title, setTitle, setAddIsOpen }: ModalType) {
     function saveTitle() {
         if (!title || title.trim() === "") {
             alert("Por favor, insira um título.");
@@ -26,15 +21,9 @@ export default function ModalAdd() {
         localStorage.setItem("modalTitle", JSON.stringify(tarefasExistentes));
 
         alert("Título salvo: " + title);
-        closeModal();
+        setAddIsOpen(false);
     }
-
-    function closeModal() {
-        setIsOpen(false);
-    }
-
-    if (!isOpen) return null;
-
+    console.log("ModalAdd rendered");
     return (
         <div className={styles.modal}>
             <div className={styles.content}>
@@ -53,12 +42,14 @@ export default function ModalAdd() {
 
                 <div className={styles.buttons}>
                     <button
+                        type="button"
                         className={stylesBtn.btnCancel}
-                        onClick={closeModal}
+                        onClick={() => setAddIsOpen(false)}
                     >
                         Cancelar
                     </button>
                     <button
+                        type="button"
                         className={stylesBtn.buttonPrimary}
                         onClick={saveTitle}
                     >

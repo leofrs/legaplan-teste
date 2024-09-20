@@ -4,11 +4,11 @@ export interface ProviderProps {
     children: ReactNode;
 }
 
-export interface UserContextType {
+export interface ModalType {
     title: string | null;
     setTitle: (title: string | null) => void;
-    isOpen: boolean;
-    setIsOpen: (isOpen: boolean) => void;
+    addIsOpen: boolean;
+    setAddIsOpen: (isOpen: boolean) => void;
 }
 
 export interface Task {

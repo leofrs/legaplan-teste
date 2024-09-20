@@ -1,13 +1,15 @@
 "use client";
 
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import styles from "../../styles/tarefas.module.scss";
-import { TarefaContext } from "@/context/tarefaContext";
 import { Task } from "@/@types";
+import TarefasHook from "@/hooks/tarefasHook";
+
+import { BiTrashAlt } from "react-icons/bi";
 
 export default function Tarefas() {
-    const context = useContext(TarefaContext);
-    const { tasks, setTasks, completedTasks, setCompletedTasks } = context;
+    const { tasks, setTasks, completedTasks, setCompletedTasks } =
+        TarefasHook();
 
     useEffect(() => {
         const storedTasks = localStorage.getItem("modalTitle");
@@ -25,7 +27,7 @@ export default function Tarefas() {
                 );
             }
         }
-    }, [setTasks, setCompletedTasks]);
+    });
 
     return (
         <main className={styles.containerTarefas}>
@@ -33,7 +35,18 @@ export default function Tarefas() {
             <div className={styles.aFazer}>
                 {tasks.length > 0 ? (
                     tasks.map((task, index) => (
-                        <div key={index}>{task.titulo}</div>
+                        <div key={index} className={styles.tarefa}>
+                            <div className={styles.checkAndTitle}>
+                                <input
+                                    type="checkbox"
+                                    name=""
+                                    id=""
+                                    title="checked"
+                                />
+                                <h6>{task.titulo}</h6>
+                            </div>
+                            <BiTrashAlt size={24} />
+                        </div>
                     ))
                 ) : (
                     <p>Não há tarefas para hoje.</p>
