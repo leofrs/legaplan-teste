@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
+import { Inter_Tight } from "next/font/google";
 import "./globals.css";
+
+const interTight = Inter_Tight({
+    variable: "--font-inter-tight",
+    weight: "500",
+    subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
     title: "legaplan teste",
@@ -13,7 +20,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="pt-BR">
-            <body>{children}</body>
+            <body className={`${interTight.variable}`}>{children}</body>
         </html>
     );
 }

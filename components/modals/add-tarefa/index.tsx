@@ -9,7 +9,7 @@ export default function ModalAdd() {
     const { title, setTitle, addIsOpen, setAddIsOpen } = ModalAddHook();
     const { setTasks } = TarefasHook();
 
-    function saveTitle() {
+    function handleAdicionar() {
         if (!title || title.trim() === "") {
             alert("Por favor, insira um título.");
             return;
@@ -73,7 +73,7 @@ export default function ModalAdd() {
                             <button
                                 type="button"
                                 className={stylesBtn.buttonPrimary}
-                                onClick={saveTitle}
+                                onClick={handleAdicionar}
                             >
                                 Adicionar
                             </button>
@@ -83,7 +83,7 @@ export default function ModalAdd() {
                             <button
                                 type="button"
                                 className={stylesBtn.buttonPrimary}
-                                onClick={saveTitle}
+                                onClick={handleAdicionar}
                             >
                                 Adicionar
                             </button>

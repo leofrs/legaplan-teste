@@ -47,7 +47,7 @@ export default function TarefasHook() {
                 );
             }
         }
-    }, [setTasks, setCompletedTasks]);
+    }, []);
 
     return {
         tasks,

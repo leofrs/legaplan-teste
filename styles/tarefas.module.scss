@@ -10,7 +10,7 @@
     flex-direction: column;
     gap: 16px;
 
-    h6 {
+    &_h6 {
         text-align: center;
         font-family: Inter Tight;
         font-size: 16px;
@@ -20,13 +20,12 @@
         color: #0000008a;
     }
 
-    .aFazer {
+    &_aFazer {
         width: 100%;
         height: 216px;
-        opacity: 0px;
         overflow-y: auto;
 
-        .tarefa {
+        &_tarefa {
             width: 100%;
             height: 56px;
             display: flex;
@@ -41,14 +40,14 @@
                 border: none;
             }
 
-            .checkAndTitle {
+            &_checkAndTitle {
                 width: 100%;
                 height: 100%;
                 display: flex;
                 align-items: center;
                 gap: 8px;
 
-                h6 {
+                &_h6 {
                     font-family: Inter Tight;
                     font-size: 16px;
                     font-weight: 400;
@@ -58,17 +57,17 @@
                 }
             }
         }
-        button {
+        &_button {
             border: none;
         }
     }
 
-    .finalizadas {
+    &_finalizadas {
         width: 100%;
         height: 56px;
         overflow-y: auto;
 
-        .tarefaFinalizada {
+        &_tarefaFinalizada {
             width: 100%;
             height: 56px;
             display: flex;
@@ -78,17 +77,17 @@
             border: 1px dashed #d7dde9;
             border-radius: 8px;
 
-            .checkAndTitle {
+            &_checkAndTitle {
                 width: 100%;
                 height: 100%;
                 display: flex;
                 align-items: center;
                 gap: 8px;
 
-                .checkbox {
+                &_checkbox {
                     display: none;
                 }
-                .customCheckbox {
+                &_customCheckbox {
                     width: 18px;
                     height: 18px;
                     background-color: #a0dcf6;
@@ -99,7 +98,7 @@
                     align-items: center;
                 }
 
-                .completed {
+                &_completed {
                     font-family: Inter Tight;
                     font-size: 16px;
                     font-weight: 400;
@@ -109,7 +108,7 @@
                     text-decoration: line-through;
                 }
             }
-            button {
+            &_button {
                 border: none;
             }
         }

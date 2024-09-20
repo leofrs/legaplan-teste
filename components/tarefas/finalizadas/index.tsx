@@ -20,22 +20,35 @@ export default function TasksFinalizadas() {
     };
     return (
         <>
-            <h6>Tarefas finalizadas</h6>
-            <div className={styles.finalizadas}>
+            <h6 className={styles.containerTarefas_h6}>Tarefas finalizadas</h6>
+            <div className={styles.containerTarefas_finalizadas}>
                 {completedTasks.length > 0 ? (
                     completedTasks.map((task) => (
-                        <div key={task.id} className={styles.tarefaFinalizada}>
-                            <div className={styles.checkAndTitle}>
+                        <div
+                            key={task.id}
+                            className={
+                                styles.containerTarefas_finalizadas_tarefaFinalizada
+                            }
+                        >
+                            <div
+                                className={
+                                    styles.containerTarefas_finalizadas_tarefaFinalizada_checkAndTitle
+                                }
+                            >
                                 <input
                                     type="checkbox"
                                     id={`checkbox-${task.id}`}
                                     title="checked"
-                                    checked={task.finalizada}
-                                    className={styles.checkbox}
+                                    defaultChecked={task.finalizada}
+                                    className={
+                                        styles.containerTarefas_finalizadas_tarefaFinalizada_checkAndTitle_checkbox
+                                    }
                                 />
                                 <label
                                     htmlFor={`checkbox-${task.id}`}
-                                    className={styles.customCheckbox}
+                                    className={
+                                        styles.containerTarefas_finalizadas_tarefaFinalizada_checkAndTitle_customCheckbox
+                                    }
                                 >
                                     <Image
                                         src={check}
@@ -44,11 +57,18 @@ export default function TasksFinalizadas() {
                                         height={8.5}
                                     />
                                 </label>
-                                <h6 className={styles.completed}>
+                                <h6
+                                    className={
+                                        styles.containerTarefas_finalizadas_tarefaFinalizada_checkAndTitle_completed
+                                    }
+                                >
                                     {task.titulo}
                                 </h6>
                             </div>
                             <button
+                                className={
+                                    styles.containerTarefas_finalizadas_tarefaFinalizada_button
+                                }
                                 type="button"
                                 title="Delete"
                                 onClick={() => handleDelete(Number(task.id))}

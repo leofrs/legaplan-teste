@@ -17,13 +17,20 @@ export default function TasksAbertas() {
         setDelIsOpen(true);
     };
     return (
-        <div>
-            <h6>Suas Tarefas de hoje</h6>
-            <div className={styles.aFazer}>
+        <>
+            <h6 className={styles.containerTarefas_h6}>Suas Tarefas de hoje</h6>
+            <div className={styles.containerTarefas_aFazer}>
                 {tasks.length > 0 ? (
                     tasks.map((task) => (
-                        <div key={task.id} className={styles.tarefa}>
-                            <div className={styles.checkAndTitle}>
+                        <div
+                            key={task.id}
+                            className={styles.containerTarefas_aFazer_tarefa}
+                        >
+                            <div
+                                className={
+                                    styles.containerTarefas_aFazer_tarefa_checkAndTitle
+                                }
+                            >
                                 <input
                                     type="checkbox"
                                     id={`checkbox-${task.id}`}
@@ -32,9 +39,18 @@ export default function TasksAbertas() {
                                         handleCheckboxChange(Number(task.id))
                                     }
                                 />
-                                <h6>{task.titulo}</h6>
+                                <h6
+                                    className={
+                                        styles.containerTarefas_aFazer_tarefa_checkAndTitle_h6
+                                    }
+                                >
+                                    {task.titulo}
+                                </h6>
                             </div>
                             <button
+                                className={
+                                    styles.containerTarefas_aFazer_button
+                                }
                                 type="button"
                                 title="Delete"
                                 onClick={() => handleDelete(Number(task.id))}
@@ -55,6 +71,6 @@ export default function TasksAbertas() {
                     id={taskIdToDelete}
                 />
             )}
-        </div>
+        </>
     );
 }

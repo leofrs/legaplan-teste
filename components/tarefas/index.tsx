@@ -9,7 +9,6 @@ export default function Tarefas() {
     return (
         <main className={styles.containerTarefas}>
             <TasksAbertas />
-
             <TasksFinalizadas />
         </main>
     );
