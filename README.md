@@ -78,7 +78,7 @@ Este projeto é uma aplicação web simples para gerenciamento de tarefas, que p
 5. Inicie o servidor:
 
     ```bash
-    npm start
+    npm run dev
     ```
 
 ### Frontend
