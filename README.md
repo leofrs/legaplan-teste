@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Desafio: Aplicação de Gerenciamento de Tarefas
 
-## Getting Started
+![Tela principal](/assets/desktop1.png)
+![Tela principal](/assets/desktop2.png)
+![Tela principal](/assets/desktop3.png)
+![Tela principal](/assets/mobile1.png)
+![Tela principal](/assets/mobile2.png)
+![Tela principal](/assets/mobile3.png)
 
-First, run the development server:
+## Descrição
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Este projeto é uma aplicação web simples para gerenciamento de tarefas, que permite aos usuários criar, visualizar e excluir tarefas.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Funcionalidades
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+-   **Gerenciamento de Tarefas:** Usuários podem listar, adicionar, marcar como concluída e excluir suas tarefas.
+-   **Interface de Usuário:** Interface intuitiva e responsiva criada com Next.js, utilizando hooks para gerenciar estado e efeitos colaterais.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Requisitos Técnicos
 
-## Learn More
+### Backend
 
-To learn more about Next.js, take a look at the following resources:
+-   **Linguagem:** TypeScript;
+-   **Tecnologia:** Node.js;
+-   **Framework:** Express.js e Prisma ORM;
+-   **Banco de Dados:** PostgreSQL.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Frontend
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+-   **Linguagem:** TypeScript;
+-   **Tecnologia:** Next.Js;
+-   **Gerenciamento de Estado:** React Hooks(useState, useEffect) e Custom hooks;
 
-## Deploy on Vercel
+## Estrutura do Projeto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Backend
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-   **Endpoints:**
+-   **get**"/api/v1/get-all-task", tasksController.getAllTasks;
+-   **post**"/api/v1/create-task", tasksController.create
+-   **delete**"/api/v1/delete-task-by-id/:id", tasksController.deleteById
+-   **put**"/api/v1/updated-task/:id", tasksController.concludeTask
+
+### Frontend
+
+-   **Componentes Principais:**
+
+    -   **header:** Exibir o header da aplicação;
+    -   **modals:** responsável pela exibição dos modais de add e excluir;
+    -   **Tarefas:** responsável por exibir as tarefas abertas e finalizadas
+
+-   **Gerenciamento de Estado:** Utilização de hooks como `useState` e `useEffect` para gerenciar estado e efeitos colaterais.
+
+## Instalação
+
+### Backend
+
+1. Clone o repositório:
+
+    ```bash
+    git clone https://github.com/leofrs/legaplan-back
+    ```
+
+2. Navegue até o diretório do backend:
+
+    ```bash
+    cd backend
+    ```
+
+3. Instale as dependências:
+
+    ```bash
+    npm install
+    ```
+
+4. Configure o banco de dados e as variáveis de ambiente no arquivo `.env`.
+
+5. Inicie o servidor:
+
+    ```bash
+    npm start
+    ```
+
+### Frontend
+
+1. Clone o repositório:
+
+    ```bash
+    git clone https://github.com/leofrs/legaplan-teste
+    ```
+
+2. Instale as dependências:
+
+    ```bash
+    npm install
+    ```
+
+3. Inicie o servidor de desenvolvimento:
+
+    ```bash
+    npm run dev
+    ```
+
+## Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
+
+## Contato
+
+Para dúvidas ou suporte, entre em contato com [leofrrodrigues86@gmail.com](mailto:leofrrodrigues86@gmail.com).
+
+---

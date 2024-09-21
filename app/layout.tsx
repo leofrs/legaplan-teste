@@ -9,8 +9,8 @@ const interTight = Inter_Tight({
 });
 
 export const metadata: Metadata = {
-    title: "legaplan teste",
-    description: "legaplan teste para desenvolvedor front-end júnior",
+    title: "legaplan Task",
+    description: "legaplan - teste para desenvolvedor front-end júnior",
 };
 
 export default function RootLayout({
