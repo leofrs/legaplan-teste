@@ -61,21 +61,15 @@ Este projeto é uma aplicação web simples para gerenciamento de tarefas, que p
     git clone https://github.com/leofrs/legaplan-back
     ```
 
-2. Navegue até o diretório do backend:
-
-    ```bash
-    cd backend
-    ```
-
-3. Instale as dependências:
+2. Instale as dependências:
 
     ```bash
     npm install
     ```
 
-4. Configure o banco de dados e as variáveis de ambiente no arquivo `.env`.
+3. Configure o banco de dados e as variáveis de ambiente no arquivo `.env`.
 
-5. Inicie o servidor:
+4. Inicie o servidor:
 
     ```bash
     npm run dev
