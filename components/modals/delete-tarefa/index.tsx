@@ -4,16 +4,20 @@ import styles from "../../../styles/modals.module.scss";
 import stylesBtn from "../../../styles/buttons.module.scss";
 import { ModalDeleType } from "@/@types";
 
+import { TaskApi } from "@/api/task";
+const taskApi = new TaskApi();
+
 export default function ModalDelete({ id, setDelIsOpen }: ModalDeleType) {
-    const handleDelete = () => {
-        const storedTasks = JSON.parse(
-            localStorage.getItem("modalTitle") || "[]"
-        );
-        const updatedTasks = storedTasks.filter(
-            (task: ModalDeleType) => task.id !== id
-        );
-        localStorage.setItem("modalTitle", JSON.stringify(updatedTasks));
-        setDelIsOpen(false);
+    const handleDelete = async () => {
+        try {
+            if (id !== null) {
+                await taskApi.del(id);
+                setDelIsOpen(false);
+                alert("Tarefa excluida com sucesso");
+            }
+        } catch (error) {
+            alert(`Um erro inesperado aconteceu: ${error}`);
+        }
     };
     return (
         <div className={styles.modal}>

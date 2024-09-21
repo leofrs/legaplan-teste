@@ -17,14 +17,8 @@ export interface ModalDeleType {
 }
 
 export interface Task {
-    titulo: string;
-    finalizada: boolean;
-}
-
-export interface Task {
-    id: string;
     title: string;
-    finalizada: boolean;
+    completed: boolean;
 }
 
 export interface TaskContextType {
@@ -32,4 +26,10 @@ export interface TaskContextType {
     setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
     completedTasks: Task[];
     setCompletedTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+}
+
+export interface ConcludeTask {
+    id: number;
+    title: string;
+    completed: boolean;
 }

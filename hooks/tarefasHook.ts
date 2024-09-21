@@ -1,53 +1,39 @@
-import { Task } from "@/@types";
+"use client";
+
 import { useEffect, useState } from "react";
-import { ModalDeleHook } from "./modalsHook";
+
+import { TaskApi } from "@/api/task";
+const taskApi = new TaskApi();
+
+interface Task {
+    id: number;
+    title: string;
+    completed: boolean;
+}
 
 export default function TarefasHook() {
-    const [tasks, setTasks] = useState<Task[]>([]);
-    const [completedTasks, setCompletedTasks] = useState<Task[]>([]);
+    const [tasks, setTasks] = useState([]);
+    const [completedTasks, setCompletedTasks] = useState([]);
     const [taskIdToDelete, setTaskIdToDelete] = useState<number | null>(null);
 
-    const { setDelIsOpen } = ModalDeleHook();
-
-    const handleDelete = (id: number) => {
-        setTaskIdToDelete(id);
-        setDelIsOpen(true);
-    };
-
-    const handleCheckboxChange = (id: number) => {
-        const storedTasks = JSON.parse(
-            localStorage.getItem("modalTitle") || "[]"
-        );
-        const updatedTasks = storedTasks.map((task: Task) => {
-            if (Number(task.id) === id) {
-                return { ...task, finalizada: true };
-            }
-            return task;
-        });
-
-        localStorage.setItem("modalTitle", JSON.stringify(updatedTasks));
-
-        setTasks(updatedTasks.filter((task: Task) => !task.finalizada));
-        setCompletedTasks(updatedTasks.filter((task: Task) => task.finalizada));
-    };
+    /*  const handleCheckboxChange = (id: number) => {
+       
+    }; */
 
     useEffect(() => {
-        const storedTasks = localStorage.getItem("modalTitle");
-        if (storedTasks) {
-            const parsedTasks: Task[] = JSON.parse(storedTasks);
-            if (Array.isArray(parsedTasks)) {
-                setTasks(parsedTasks.filter((task) => !task.finalizada));
+        const getAllTasks = async () => {
+            const get = await taskApi.getTaskByAuthor();
+            if (get) {
+                setTasks(get.filter((task: Task) => task.completed === false));
                 setCompletedTasks(
-                    parsedTasks.filter((task) => task.finalizada)
+                    get.filter((task: Task) => task.completed === true)
                 );
             } else {
-                console.error(
-                    "Os dados armazenados não são um array:",
-                    parsedTasks
-                );
+                alert("Problema encontrado ao puxar as tarefas do DB");
             }
-        }
-    }, []);
+        };
+        getAllTasks();
+    }, [tasks, completedTasks]);
 
     return {
         tasks,
@@ -55,8 +41,7 @@ export default function TarefasHook() {
         completedTasks,
         setCompletedTasks,
         taskIdToDelete,
-        handleDelete,
-        handleCheckboxChange,
+        //handleCheckboxChange,
         setTaskIdToDelete,
     };
 }

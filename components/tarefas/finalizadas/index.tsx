@@ -14,69 +14,74 @@ export default function TasksFinalizadas() {
     const { delIsOpen, setDelIsOpen } = ModalDeleHook();
     const { setTaskIdToDelete, completedTasks, taskIdToDelete } = TarefasHook();
 
-    const handleDelete = (id: number) => {
-        setTaskIdToDelete(id);
-        setDelIsOpen(true);
+    const handleDelete = async (id: number) => {
+        if (id !== null) {
+            setDelIsOpen(true);
+            setTaskIdToDelete(id);
+        }
     };
     return (
         <>
             <h6 className={styles.containerTarefas_h6}>Tarefas finalizadas</h6>
             <div className={styles.containerTarefas_finalizadas}>
                 {completedTasks.length > 0 ? (
-                    completedTasks.map((task) => (
-                        <div
-                            key={task.id}
-                            className={
-                                styles.containerTarefas_finalizadas_tarefaFinalizada
-                            }
-                        >
+                    completedTasks.map((task) => {
+                        const { id, title, completed } = task;
+                        return (
                             <div
+                                key={id}
                                 className={
-                                    styles.containerTarefas_finalizadas_tarefaFinalizada_checkAndTitle
+                                    styles.containerTarefas_finalizadas_tarefaFinalizada
                                 }
                             >
-                                <input
-                                    type="checkbox"
-                                    id={`checkbox-${task.id}`}
-                                    title="checked"
-                                    defaultChecked={task.finalizada}
+                                <div
                                     className={
-                                        styles.containerTarefas_finalizadas_tarefaFinalizada_checkAndTitle_checkbox
-                                    }
-                                />
-                                <label
-                                    htmlFor={`checkbox-${task.id}`}
-                                    className={
-                                        styles.containerTarefas_finalizadas_tarefaFinalizada_checkAndTitle_customCheckbox
+                                        styles.containerTarefas_finalizadas_tarefaFinalizada_checkAndTitle
                                     }
                                 >
-                                    <Image
-                                        src={check}
-                                        alt="check"
-                                        width={12}
-                                        height={8.5}
+                                    <input
+                                        type="checkbox"
+                                        id={`checkbox-${id}`}
+                                        title="checked"
+                                        defaultChecked={completed}
+                                        className={
+                                            styles.containerTarefas_finalizadas_tarefaFinalizada_checkAndTitle_checkbox
+                                        }
                                     />
-                                </label>
-                                <h6
+                                    <label
+                                        htmlFor={`checkbox-${id}`}
+                                        className={
+                                            styles.containerTarefas_finalizadas_tarefaFinalizada_checkAndTitle_customCheckbox
+                                        }
+                                    >
+                                        <Image
+                                            src={check}
+                                            alt="check"
+                                            width={12}
+                                            height={8.5}
+                                        />
+                                    </label>
+                                    <h6
+                                        className={
+                                            styles.containerTarefas_finalizadas_tarefaFinalizada_checkAndTitle_completed
+                                        }
+                                    >
+                                        {title}
+                                    </h6>
+                                </div>
+                                <button
                                     className={
-                                        styles.containerTarefas_finalizadas_tarefaFinalizada_checkAndTitle_completed
+                                        styles.containerTarefas_finalizadas_tarefaFinalizada_button
                                     }
+                                    type="button"
+                                    title="Delete"
+                                    onClick={() => handleDelete(id)}
                                 >
-                                    {task.titulo}
-                                </h6>
+                                    <BiTrashAlt size={24} />
+                                </button>
                             </div>
-                            <button
-                                className={
-                                    styles.containerTarefas_finalizadas_tarefaFinalizada_button
-                                }
-                                type="button"
-                                title="Delete"
-                                onClick={() => handleDelete(Number(task.id))}
-                            >
-                                <BiTrashAlt size={24} />
-                            </button>
-                        </div>
-                    ))
+                        );
+                    })
                 ) : (
                     <p>Não há tarefas finalizadas.</p>
                 )}

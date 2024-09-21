@@ -5,34 +5,32 @@ import stylesBtn from "../../../styles/buttons.module.scss";
 import TarefasHook from "@/hooks/tarefasHook";
 import { ModalAddHook } from "@/hooks/modalsHook";
 
+import { TaskApi } from "@/api/task";
+const taskApi = new TaskApi();
+
 export default function ModalAdd() {
     const { title, setTitle, addIsOpen, setAddIsOpen } = ModalAddHook();
     const { setTasks } = TarefasHook();
 
-    function handleAdicionar() {
-        if (!title || title.trim() === "") {
-            alert("Por favor, insira um título.");
-            return;
+    const handleCretae = async () => {
+        try {
+            if (title !== null) {
+                const task = await taskApi.createTask({
+                    title,
+                    completed: false,
+                });
+                setTasks(task);
+                setAddIsOpen(false);
+                setTitle("");
+
+                alert("Tarefa criada com sucesso");
+            } else {
+                alert("O titulo não pode ser vázio");
+            }
+        } catch (error) {
+            alert(`Error encontrado ao criar a task: ${error}`);
         }
-
-        const tarefasExistentes = JSON.parse(
-            localStorage.getItem("modalTitle") || "[]"
-        );
-
-        const novaTarefa = {
-            id: Date.now(),
-            titulo: title,
-            finalizada: false,
-        };
-        const allTasks = tarefasExistentes.push(novaTarefa);
-        setTasks(allTasks);
-
-        localStorage.setItem("modalTitle", JSON.stringify(tarefasExistentes));
-
-        alert("Título salvo: " + title);
-        setAddIsOpen(false);
-        setTitle("");
-    }
+    };
 
     return (
         <>
@@ -73,7 +71,7 @@ export default function ModalAdd() {
                             <button
                                 type="button"
                                 className={stylesBtn.buttonPrimary}
-                                onClick={handleAdicionar}
+                                onClick={handleCretae}
                             >
                                 Adicionar
                             </button>
@@ -83,7 +81,7 @@ export default function ModalAdd() {
                             <button
                                 type="button"
                                 className={stylesBtn.buttonPrimary}
-                                onClick={handleAdicionar}
+                                onClick={handleCretae}
                             >
                                 Adicionar
                             </button>
